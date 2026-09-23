@@ -1,3 +1,6 @@
-//Architectural pattern: MVC, DI, MVP
+import dotenv from 'dotenv';
+dotenv.config();
 
-//Design pattern: Middleware,Decotar
+
+console.log('PORT:' ,process.env.PORT)
+console.log("mongo url:", process.env.MONGO_URL)
