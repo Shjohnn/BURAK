@@ -6,7 +6,6 @@
 
 function getSquareNumbers(array) {
     let result = [];
-    let obj = {};
     for (let number of array) {
         let square = number * number;
         let obj = { 
