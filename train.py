@@ -1,3 +1,29 @@
+# TASK O:
+
+# Shunday function yozing va u har xil qiymatlardan iborat array qabul qilsin.
+# Va array ichidagi sonlar yig'indisini hisoblab chiqgan javobni qaytarsin
+
+# MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]); return 45
+
+# Yuqoridagi misolda array tarkibida faqatgina ikkita yagona son mavjud bular 10 hamda 35
+# Qolganlari nested bo'lib yoki type'lari number emas.
+
+
+
+
+def calculateSumOfNumbers(array):
+    total = 0
+
+    for item in array:
+        if type(item) in (int, float):
+            total += item
+
+    return total
+
+
+print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
+
+
 # TASK N:
 
 # Shunday function yozing, u string qabul qilsin va string
@@ -6,12 +32,12 @@
 
 # MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 
-def palindromCheck(text):
-    reverse = text[::-1]
-    return text == reverse
+# def palindromCheck(text):
+#     reverse = text[::-1]
+#     return text == reverse
 
-print(palindromCheck("dad"))  # True
-print(palindromCheck("son"))  # False
+# print(palindromCheck("dad"))  # True
+# print(palindromCheck("son"))  # False
 
 
 

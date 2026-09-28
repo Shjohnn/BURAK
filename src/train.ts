@@ -1,4 +1,33 @@
 
+// TASK O:
+
+// Shunday function yozing va u har xil
+//  qiymatlardan iborat array qabul qilsin.
+// Va array ichidagi sonlar yig'indisini hisoblab 
+// chiqgan javobni qaytarsin
+
+// MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]); return 45
+
+// Yuqoridagi misolda array tarkibida 
+// faqatgina ikkita yagona son mavjud bular 10 hamda 35
+// Qolganlari nested bo'lib yoki type'lari number emas.
+
+function calculateSumOfNumbers(array: any[]): number {
+    let total: number = 0;
+
+    for (let item of array) {
+        if (typeof item === "number") {
+            total += item;
+        }
+    }
+
+    return total;
+}
+
+console.log(
+    calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])
+);
+
 // Project standarts:
   //-Login standarts
   //-naming standarts
