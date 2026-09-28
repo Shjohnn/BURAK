@@ -1,3 +1,24 @@
+
+// Project standarts:
+  //-Login standarts
+  //-naming standarts
+    //function,method, variable => Camel case  =>goHome
+    //class => Pascal         
+    //folder => Kebab 
+    //css => snake
+  //-Error handling:
+
+
+
+
+
+
+
+
+
+
+
+
 // TASK N:
 
 // Shunday function yozing, u string qabul qilsin va string 
@@ -9,14 +30,14 @@
 
 
 
-function palindromCheck(text: string): boolean {
-    let reverse: string = text.split("").reverse().join("");
+// function palindromCheck(text: string): boolean {
+//     let reverse: string = text.split("").reverse().join("");
 
-    return text === reverse;
-}
+//     return text === reverse;
+// }
 
-console.log(palindromCheck("dad")); // true
-console.log(palindromCheck("son")); // false
+// console.log(palindromCheck("dad")); // true
+// console.log(palindromCheck("son")); // false
 
 
 
