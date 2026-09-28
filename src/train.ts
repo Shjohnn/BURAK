@@ -9,7 +9,11 @@
   //-Error handling:
 
 
-
+/*
+Traditional API
+Rest API
+GraphQl API
+ */
 
 
 
