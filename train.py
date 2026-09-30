@@ -1,3 +1,22 @@
+# TASK P:
+
+# Parametr sifatida yagona object qabul 
+# qiladigan function yozing.
+# Qabul qilingan objectni nested array 
+# sifatida convert qilib qaytarsin
+
+# MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+def object_to_array(obj):
+    return list(obj.items())
+
+
+print(object_to_array({"a": 10, "b": 20}))
+
+
+
+
+
 # TASK O:
 
 # Shunday function yozing va u har xil qiymatlardan iborat array qabul qilsin.
@@ -11,17 +30,17 @@
 
 
 
-def calculateSumOfNumbers(array):
-    total = 0
+# def calculateSumOfNumbers(array):
+#     total = 0
 
-    for item in array:
-        if type(item) in (int, float):
-            total += item
+#     for item in array:
+#         if type(item) in (int, float):
+#             total += item
 
-    return total
+#     return total
 
 
-print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
+# print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
 
 
 # TASK N:
