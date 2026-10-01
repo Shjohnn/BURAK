@@ -11,7 +11,8 @@ mongosse.connect(process.env.MONGO_URL as string, {})
     console.log("MongoDB connected succesfully!");
     const PORT = process.env.PORT ?? 3003
     app.listen(PORT, function() {
-        console.log("Bizning serverimiz muvofaqiyatli run boldi!!!")
+        console.info("Bizning serverimiz muvofaqiyatli run boldi!!!");
+        console.info(`Server is running on port: localhost:${PORT}/admin \n`);
     })
 })
 .catch((err) => console.log("Error on connecting MongoDB",err))
