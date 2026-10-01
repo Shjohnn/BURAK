@@ -5,6 +5,8 @@ import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemeberType } from "../libs/enums/member.enum";
 
 const restuarantController: T = {}
+const memberService = new MemberService();
+
 restuarantController.goHome=(req:Request,res:Response) =>{
     try {
         console.log("goHome");
@@ -12,6 +14,15 @@ restuarantController.goHome=(req:Request,res:Response) =>{
         // send/ json/redirect/ end/ render
     } catch(err) {
         console.log("Error goHome", err)
+    }
+};
+
+restuarantController.getSignup=(req:Request,res:Response) =>{
+    try {
+        console.log("getSignup");
+        res.send("Signup page")
+    } catch(err) {
+        console.log("Error goSignup", err)
     }
 };
 
@@ -24,12 +35,28 @@ restuarantController.getLogin=(req:Request,res:Response) =>{
     }
 };
 
+restuarantController.proccesSignup= async(req:Request,res:Response) =>{
+    try {
+        console.log("proccesSignup");
+        console.log("body:", req.body);
+
+        const newMember:MemberInput = req.body;
+        //TODO SESSIONS AUTHENTICATION
+        newMember.memberType=MemeberType.RESTUARANT;
+        await memberService.proccesSignup(newMember);
+        res.send("Done")
+    } catch(err) {
+        console.log(err);
+        res.send(err)
+    }
+};
+
+
 restuarantController.proccesLogin=async(req:Request,res:Response) =>{
     try {
         console.log("proccesLogin");
         console.log("body:", req.body);
         const input:LoginInput = req.body;
-        const memberService = new MemberService();
         const result = await memberService.proccesLogin(input);
         
         res.send(result)
@@ -39,30 +66,9 @@ restuarantController.proccesLogin=async(req:Request,res:Response) =>{
     }
 };
 
+
+
+
+
+
 export default restuarantController;
-
-restuarantController.getSignup=(req:Request,res:Response) =>{
-    try {
-        console.log("getSignup");
-        res.send("Signup page")
-    } catch(err) {
-        console.log("Error goSignup", err)
-    }
-};
-
-
-restuarantController.proccesSignup= async(req:Request,res:Response) =>{
-    try {
-        console.log("proccesSignup");
-        console.log("body:", req.body);
-
-        const newMember:MemberInput = req.body;
-        newMember.memberType=MemeberType.RESTUARANT;
-        const memberService = new MemberService();
-        await memberService.proccesSignup(newMember);
-        res.send("Done")
-    } catch(err) {
-        console.log(err);
-        res.send(err)
-    }
-};

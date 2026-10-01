@@ -1,3 +1,20 @@
+/* 
+Traditional FD => BSSR (Admin) => Backend server side rendering =>  EJS
+Modern FD      => SPA (User app) => React
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 // # TASK P:
 
 // # Parametr sifatida yagona object qabul 
@@ -7,11 +24,11 @@
 
 // # MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
 
-function objectToArray(obj: Record<string, number>) {
-    return Object.entries(obj);
-}
+// function objectToArray(obj: Record<string, number>) {
+//     return Object.entries(obj);
+// }
 
-console.log(objectToArray({ a: 10, b: 20 }));
+// console.log(objectToArray({ a: 10, b: 20 }));
 
 
 
