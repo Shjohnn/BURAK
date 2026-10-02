@@ -1,3 +1,30 @@
+# // TASK Q:
+
+# // Shunday function yozing, u 2 ta parametrga ega bo'lib
+# // birinchisi object, ikkinchisi string bo'lsin.
+# // Agar qabul qilinayotgan ikkinchi string, objectning
+# // biror bir propertysiga mos kelsa, 'true',
+# //  aks holda mos kelmasa 'false' qaytarsin.
+
+# // MASALAN: hasProperty({ name: "BMW", model: "M3" }, "model"); return true;
+# // Ushbu misolda, 'model' string, objectning propertysiga 
+# // mos kelganligi uchun 'true' natijani qaytarmoqda
+
+
+def has_property(obj, prop):
+    return prop in obj
+
+print(has_property({ "name": "BMW", "model": "M3" }, "model"))  # True
+
+
+
+
+
+
+
+
+
+
 # TASK P:
 
 # Parametr sifatida yagona object qabul 
@@ -7,11 +34,11 @@
 
 # MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
 
-def object_to_array(obj):
-    return list(obj.items())
+# def object_to_array(obj):
+#     return list(obj.items())
 
 
-print(object_to_array({"a": 10, "b": 20}))
+# print(object_to_array({"a": 10, "b": 20}))
 
 
 
