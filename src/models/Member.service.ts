@@ -56,8 +56,8 @@ class MemberService {
         const exist = await this.memberModel
             .findOne({memberType: MemeberType.RESTUARANT})
             .exec();
-            console.log("already restuarant exists")
         if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+
         const salt = await bcrypt.genSalt();
         input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
 
@@ -65,7 +65,8 @@ class MemberService {
            const result = await this.memberModel.create(input);
         result.memberPassword = "";
          return result;
-     }catch{
+     }catch(err){
+        console.log("ERROR, model:proccesSignup:", err);
         throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
      }
     }

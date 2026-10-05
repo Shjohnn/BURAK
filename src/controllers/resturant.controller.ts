@@ -1,7 +1,7 @@
 import {T} from "../libs/types/common";
 import {Request,Response} from "express";
 import MemberService from "../models/Member.service";
-import { LoginInput, MemberInput } from "../libs/types/member";
+import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemeberType } from "../libs/enums/member.enum";
 
 const restuarantController: T = {}
@@ -35,31 +35,39 @@ restuarantController.getLogin=(req:Request,res:Response) =>{
     }
 };
 
-restuarantController.proccesSignup= async(req:Request,res:Response) =>{
+restuarantController.proccesSignup= async(req:AdminRequest,res:Response) =>{
     try {
         console.log("proccesSignup");
-        console.log("body:", req.body);
 
         const newMember:MemberInput = req.body;
-        //TODO SESSIONS AUTHENTICATION
+                //TODO SESSIONS AUTHENTICATION
         newMember.memberType=MemeberType.RESTUARANT;
-        await memberService.proccesSignup(newMember);
-        res.send("Done")
-    } catch(err) {
-        console.log(err);
+        const result = await memberService.proccesSignup(newMember);
+
+
+
+        req.session.member  = result;
+        req.session.save(function() {
+            res.send(result);
+        });
+        } catch(err) {
+        console.log(err,"Error proccesSignup");
         res.send(err)
     }
 };
 
 
-restuarantController.proccesLogin=async(req:Request,res:Response) =>{
+restuarantController.proccesLogin=async(req:AdminRequest,res:Response) =>{
     try {
         console.log("proccesLogin");
         console.log("body:", req.body);
         const input:LoginInput = req.body;
         const result = await memberService.proccesLogin(input);
         
-        res.send(result)
+        req.session.member  = result;
+        req.session.save(function() {
+            res.send(result);
+        });
     } catch(err) {
         console.log("Error proccesLogin", err);
         res.send(err)

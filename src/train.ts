@@ -1,3 +1,28 @@
+
+
+// TASK R
+
+// Shunday function yozing, u string parametrga ega bo'lsin.
+// Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa,
+// string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin
+
+// MASALAN: calculate("1 + 3"); return 4;
+// //1 + 3 = 4, shu sababli 4 natijani qaytarmoqda. 
+
+function calculate(ele: string): number{
+  const a = ele.split(" ")
+  .filter((item) => !isNaN(Number(item)))
+  .reduce((sum, item) => sum + Number(item), 0);
+return a
+}
+console.log(calculate("1 + 3")); // 4
+
+
+
+
+
+
+
 // TASK Q:
 
 // Shunday function yozing, u 2 ta parametrga ega bo'lib
@@ -12,12 +37,12 @@
 
 
 
-function hasProperty(obj: Record<string, any>, prop: string): boolean {
-    return obj.hasOwnProperty(prop);
-}
+// function hasProperty(obj: Record<string, any>, prop: string): boolean {
+//     return obj.hasOwnProperty(prop);
+// }
 
 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
 
 
 
