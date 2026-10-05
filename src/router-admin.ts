@@ -16,7 +16,7 @@ routerAdmin
     .post('/signup', restuarantController.proccesSignup);
 
 
-
+routerAdmin.get("check-me", restuarantController.checkAuthSession);
     
 //product
 
