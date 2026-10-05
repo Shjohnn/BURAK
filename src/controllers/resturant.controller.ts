@@ -3,7 +3,7 @@ import {Request,Response} from "express";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemeberType } from "../libs/enums/member.enum";
-import { Message } from "../libs/Errors";
+import Errors, { Message } from "../libs/Errors";
 
 const restuarantController: T = {}
 const memberService = new MemberService();
@@ -15,6 +15,7 @@ restuarantController.goHome=(req:Request,res:Response) =>{
         // send/ json/redirect/ end/ render
     } catch(err) {
         console.log("Error goHome", err)
+        res.redirect("/admin")
     }
 };
 
@@ -24,6 +25,7 @@ restuarantController.getSignup=(req:Request,res:Response) =>{
         res.render("signup")
     } catch(err) {
         console.log("Error goSignup", err)
+        res.redirect("/admin")
     }
 };
 
@@ -33,6 +35,7 @@ restuarantController.getLogin=(req:Request,res:Response) =>{
         res.render("login")
     } catch(err) {
         console.log("Error goLogin", err)
+        res.redirect("/admin")
     }
 };
 
@@ -53,7 +56,8 @@ restuarantController.proccesSignup= async(req:AdminRequest,res:Response) =>{
         });
         } catch(err) {
         console.log(err,"Error proccesSignup");
-        res.send(err)
+        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+        res.send(`<script> alert("${message}"); window.location.replace('admin/signup') </script>`);
     }
 };
 
@@ -71,7 +75,20 @@ restuarantController.proccesLogin=async(req:AdminRequest,res:Response) =>{
         });
     } catch(err) {
         console.log("Error proccesLogin", err);
-        res.send(err)
+        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+        res.send(`<script> alert("${message}"); window.location.replace('admin/login') </script>`);
+    }
+};
+
+restuarantController.logout = async(req: AdminRequest, res: Response) =>{
+    try{
+        console.log("logout")
+        req.session.destroy(function(){
+            res.redirect("/admin");
+        });
+    } catch(err){
+        console.log("Error, logout", err);
+        res.redirect("/admin");
     }
 };
 
