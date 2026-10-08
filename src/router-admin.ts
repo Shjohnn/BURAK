@@ -20,7 +20,11 @@ routerAdmin.get("/logout", restuarantController.logout);
 routerAdmin.get("/check-me", restuarantController.checkAuthSession);
     
 //product
- routerAdmin.get("/product/all", productController.getAllProducts);
+ routerAdmin.get(
+    "/product/all", 
+    restuarantController.verifyRestuarant,
+    productController.getAllProducts
+);
  routerAdmin.post("/product/create", productController.createNewProduct);
  routerAdmin.put("/product/:id", productController.updateChosenProduct);
 
