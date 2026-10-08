@@ -114,7 +114,7 @@ restuarantController.verifyRestuarant = async(
             req.member = req.session.member;
             next();
         }else{const message =Message.NOT_AUTHENTICATED;
-        res.send(`<script> alert("${message}"); window.location.replace('admin/login') </script>`);
+        res.send(`<script> alert("${message}"); window.location.replace('/admin/login') </script>`);
         
     };     
 }; 
