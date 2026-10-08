@@ -2,6 +2,7 @@ import express  from "express";
 const routerAdmin = express.Router();
 import restuarantController from "./controllers/resturant.controller";
 import productController from "./controllers/product.controller";
+import makeUploader from "./libs/utils/uploader";
 
 
 //resturant
@@ -14,7 +15,7 @@ routerAdmin
 
 routerAdmin
     .get('/signup', restuarantController.getSignup)
-    .post('/signup', restuarantController.proccesSignup);
+    .post('/signup',makeUploader("members").single('memberImage'), restuarantController.proccesSignup);
 
 routerAdmin.get("/logout", restuarantController.logout);
 routerAdmin.get("/check-me", restuarantController.checkAuthSession);
@@ -25,8 +26,16 @@ routerAdmin.get("/check-me", restuarantController.checkAuthSession);
     restuarantController.verifyRestuarant,
     productController.getAllProducts
 );
- routerAdmin.post("/product/create", productController.createNewProduct);
- routerAdmin.put("/product/:id", productController.updateChosenProduct);
+ routerAdmin.post(
+    "/product/create", 
+    restuarantController.verifyRestuarant,
+    // uploadProductImage.single('productImage'),
+    makeUploader("products").single('productImage'),
+    productController.createNewProduct);
+
+ routerAdmin.put("/product/:id", 
+    restuarantController.verifyRestuarant,
+    productController.updateChosenProduct);
 
 
 
