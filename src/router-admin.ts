@@ -30,7 +30,7 @@ routerAdmin.get("/check-me", restuarantController.checkAuthSession);
     "/product/create", 
     restuarantController.verifyRestuarant,
     // uploadProductImage.single('productImage'),
-    makeUploader("products").single('productImage'),
+    makeUploader("products").array('productImages', 5),
     productController.createNewProduct);
 
  routerAdmin.put("/product/:id", 
