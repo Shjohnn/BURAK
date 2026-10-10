@@ -3,6 +3,9 @@
 <body style="background-color: aliceblue;">
     <div class="format1">Products Page</div>
     <div><%=session?.memberNick%></div>
+    <% products.map((value,key) =>{%>
+        <p> <%=  value.productName %> <%=  value.productSize %></p>
+    <%}) %>
 </body>
 </html>
   <%- include('includes/footer') %>

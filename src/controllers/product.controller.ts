@@ -16,8 +16,10 @@ const productController: T = {}
 
 productController.getAllProducts= async(req:Request,res:Response) =>{
     try {
-        console.log("getAllProducts");
-        res.render("products")
+        
+        const data = await productService.getAllProducts()
+        res.render("products", {products:data})
+
     } catch(err) {
         console.log("Error in getting all products", err);
         if (err instanceof Errors) res.status(err.code).json({ err}); 
@@ -41,7 +43,6 @@ productController.createNewProduct= async(req:AdminRequest,res:Response) =>{
 
 
     } catch(err) {
-        console.log("Error in creating new product", err);
         const message = err instanceof Errors ? err.message :Message.SOMETHING_WENT_WRONG;
         res.send(`<script> alert("${message}"); window.location.replace('/admin/product/all') </script>`);
 

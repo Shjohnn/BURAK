@@ -14,6 +14,14 @@ class ProductService {
 
 
     //SSR
+    public async getAllProducts():Promise<Product[]>{
+            //string=> ObjectId
+            const result = await this.productModel.find().exec()
+            if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND)
+            console.log("res",result)
+            return result
+}
+
 
     public async createNewProduct(input:ProductInput):Promise<Product> {
         try {
