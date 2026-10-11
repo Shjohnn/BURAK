@@ -40,6 +40,6 @@ routerAdmin.get("/check-me", restuarantController.checkAuthSession);
 
 
 //user
-
+routerAdmin.get("/user/all", restuarantController.verifyRestuarant,restuarantController.getUsers)
 
 export default routerAdmin;

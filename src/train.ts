@@ -12,12 +12,12 @@
 // tartib raqam bo'yicha tartiblab qaytarmoqda.
 
 
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-    return arr1.concat(arr2).sort((a, b) => a - b);
-}
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//     return arr1.concat(arr2).sort((a, b) => a - b);
+// }
 
-console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
-// [0, 3, 4, 4, 6, 30, 31]
+// console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+// // [0, 3, 4, 4, 6, 30, 31]
 
 
 
