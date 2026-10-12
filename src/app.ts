@@ -33,10 +33,10 @@ app.use(
     })
 )
 
-app.use((req,res,next)=>{
-    const sessionInstance = req.session as T;
-    res.locals.session = sessionInstance.member;
-    next();
+app.use((req, res, next) => {
+  const sessionInstance = req.session as T;
+  res.locals.member = sessionInstance.member;
+  next();
 });
 //3-VEIWS
 app.set('views',path.join(__dirname, "views"));
