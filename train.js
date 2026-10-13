@@ -3,6 +3,79 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function reverseWord(word) {
+//     return word.split("").reverse().join("")
+    
+// }
+
+// console.log(reverseWord("salom"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // TASK N: Shunday function yozing, u string qabul qilsin va string palindrom
 //  yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz 
 //  ekanligini aniqlab boolean qiymat qaytarsin.
@@ -10,14 +83,14 @@
 
 
 
-function palindromCheck(str) {
-    let reverse = str.split("").reverse().join("");
+// function palindromCheck(str) {
+//     let reverse = str.split("").reverse().join("");
 
-    return str === reverse;
-}
+//     return str === reverse;
+// }
 
-console.log(palindromCheck("dad")); // true
-console.log(palindromCheck("son")); // false
+// console.log(palindromCheck("dad")); // true
+// console.log(palindromCheck("son")); // false
 
 
 
