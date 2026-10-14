@@ -57,7 +57,7 @@ restuarantController.proccesSignup= async(req:AdminRequest,res:Response) =>{
         } catch(err) {
         console.log(err,"Error proccesSignup");
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-        res.send(`<script> alert("${message}"); window.location.replace('admin/signup') </script>`);
+        res.send(`<script> alert("${message}"); window.location.replace('/admin/signup') </script>`);
     }
 };
 
@@ -66,7 +66,8 @@ restuarantController.proccesLogin=async(req:AdminRequest,res:Response) =>{
     try {
         console.log("proccesLogin");
         console.log("body:", req.body);
-        const input:LoginInput = req.body;
+        //FORCED ERROR QOYISH
+         const input:LoginInput = req.body;
         const result = await memberService.proccesLogin(input);
         
         req.session.member  = result;
@@ -76,7 +77,7 @@ restuarantController.proccesLogin=async(req:AdminRequest,res:Response) =>{
     } catch(err) {
         console.log("Error proccesLogin", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-        res.send(`<script> alert("${message}"); window.location.replace('admin/login') </script>`);
+        res.send(`<script> alert("${message}"); window.location.replace('/admin/login') </script>`);
     }
 };
 
