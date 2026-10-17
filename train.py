@@ -11,14 +11,6 @@
 # // mos kelganligi uchun 'true' natijani qaytarmoqda
 
 
-def has_property(obj, prop):
-    return prop in obj
-
-print(has_property({ "name": "BMW", "model": "M3" }, "model"))  # True
-
-
-
-
 
 
 
