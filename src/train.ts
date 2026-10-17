@@ -268,7 +268,7 @@ GraphQl API
 //   tashkil topgan object hosil qilib, hosil bolgan objectlarni array ichida qaytarsin.
 // MASALAN: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9
 
-
+  
 // function getSquareNumbers(array: number[]) {
 //     let result : {number:number; square:number}[]=[];
 //     for (let number of array) {

@@ -44,7 +44,7 @@ function validateSignUpForm(){
         return false
     }
 
-    const memberImage= $(".member-image").get(0).files[0]
+    const memberImage= $(".member-image").get(0)?.files[0]
     ? $ (".member-image").get(0).files[0].name
     : null;
     if (!memberImage) {
