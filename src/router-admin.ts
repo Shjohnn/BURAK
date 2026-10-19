@@ -33,7 +33,7 @@ routerAdmin.get("/check-me", restuarantController.checkAuthSession);
     makeUploader("products").array('productImages', 5),
     productController.createNewProduct);
 
- routerAdmin.put("/product/:id", 
+ routerAdmin.post("/product/:id", 
     restuarantController.verifyRestuarant,
     productController.updateChosenProduct);
 
