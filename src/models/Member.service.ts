@@ -1,5 +1,5 @@
 import { shapeIntoMongooseObjectId } from "../libs/config";
-import { MemeberType } from "../libs/enums/member.enum";
+import { MemeberStatus, MemeberType } from "../libs/enums/member.enum";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { Member, MemberInput ,LoginInput, MemberUpdateInput} from "../libs/types/member";
 import MemberModel from "../schema/Member.model";
@@ -34,12 +34,17 @@ class MemberService {
         //TODO : consider memberStatus and memberType in login
         const member = await this.memberModel
             .findOne(
-                {memberNick:input.memberNick},
-                {memberNick:1,memberPassword:1}
+                {memberNick:input.memberNick,
+                    memberStatus: {$ne:MemeberStatus.DELETE}
+                },
+                {memberNick:1,memberPassword:1, MemeberStatus:1}
             )
             .exec();
 
         if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+        else if(member.memberStatus === MemeberStatus.BLOCK) {
+            throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER)
+        }
         const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword);   
         if (!isMatch){ 
             throw new Errors(HttpCode.UNATHORIZED, Message.WRONG_PASSWORD);
