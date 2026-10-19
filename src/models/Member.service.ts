@@ -25,7 +25,6 @@ class MemberService {
         result.memberPassword = "";
          return result.toJSON();
      }catch(err){
-        console.log("Error in signup",err);
         throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
      }
     }
@@ -72,7 +71,6 @@ class MemberService {
         result.memberPassword = "";
          return result;
      }catch(err){
-        console.log("ERROR, model:proccesSignup:", err);
         throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
      }
     }

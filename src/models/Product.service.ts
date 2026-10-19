@@ -18,7 +18,6 @@ class ProductService {
             //string=> ObjectId
             const result = await this.productModel.find().exec()
             if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND)
-            console.log("res",result)
             return result
 }
 
@@ -27,7 +26,6 @@ class ProductService {
         try {
             return await this.productModel.create(input)
         } catch(err){
-            console.log("Error, create failed",err)
             throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED)
         }
     }
@@ -38,7 +36,6 @@ class ProductService {
             id = shapeIntoMongooseObjectId(id);
             const result = await this.productModel.findOneAndUpdate({_id:id}, input,{new:true}).exec();
             if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.UPDATE_FAILED)
-            console.log("res",result)
             return result
     }
 }
