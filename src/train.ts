@@ -1,3 +1,29 @@
+// TASK Y
+
+// Shunday function yozing, uni 2'ta array parametri bo'lsin.
+// Bu function ikkala arrayda ham ishtirok etgan bir xil
+// qiymatlarni yagona arrayga joylab qaytarsin.
+
+// MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+
+// Yuqoridagi misolda, argument sifatida berilayotgan array'larda
+// o'xshash sonlar mavjud. Function'ning vazifasi esa ana shu
+// ikkala array'da ishtirok etgan o'xshash sonlarni yagona arrayga
+// joylab return qilmoqda.
+
+
+function findIntersection(array1:number[], array2:number[]){
+  let mutual: number[]=[];
+  for (let num of array1){
+    if (array2.includes(num)){
+      mutual.push(num)
+    }
+  }
+  return mutual
+
+}
+console.log(findIntersection([1,2,3], [3,2,0]) ) //return [2,3]
+
 // TASK X
 
 // Shunday function yozing, uni object va string parametrlari bo'lsin.
@@ -13,23 +39,23 @@
 // tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
 
 
-function countOccurrences(obj: any, key: string): number {
-  let count = 0;
+// function countOccurrences(obj: any, key: string): number {
+//   let count = 0;
 
-  for (let prop in obj) {
-    if (prop === key) {
-      count++;
-    }
+//   for (let prop in obj) {
+//     if (prop === key) {
+//       count++;
+//     }
 
-    if (typeof obj[prop] === "object" && obj[prop] !== null) {
-      count += countOccurrences(obj[prop], key);
-    }
-  }
+//     if (typeof obj[prop] === "object" && obj[prop] !== null) {
+//       count += countOccurrences(obj[prop], key);
+//     }
+//   }
 
-  return count;
-}
+//   return count;
+// }
 
-console.log(countOccurrences({ model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },"model")); // 2
+// console.log(countOccurrences({ model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },"model")); // 2
 
 
 
