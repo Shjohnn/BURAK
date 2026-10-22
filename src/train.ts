@@ -1,3 +1,40 @@
+// TASK X
+
+// Shunday function yozing, uni object va string parametrlari bo'lsin.
+// Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
+// necha marotaba takrorlanganlini sanab qaytarsin.
+
+// Eslatma => Nested object'lar ham sanalsin
+
+// MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
+
+// Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
+// Funktsiya, shu ikkinchi argument 'model', birinchi argument object
+// tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+
+function countOccurrences(obj: any, key: string): number {
+  let count = 0;
+
+  for (let prop in obj) {
+    if (prop === key) {
+      count++;
+    }
+
+    if (typeof obj[prop] === "object" && obj[prop] !== null) {
+      count += countOccurrences(obj[prop], key);
+    }
+  }
+
+  return count;
+}
+
+console.log(countOccurrences({ model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },"model")); // 2
+
+
+
+
+
 // TASK W
 
 // Shunday function yozing, u o'ziga parametr sifatida
@@ -10,17 +47,17 @@
 // Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga
 // asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
 
-function chunkArray(arr: number[], num: number): number[][] {
-  let list: number[][] = [];
+// function chunkArray(arr: number[], num: number): number[][] {
+//   let list: number[][] = [];
 
-  for (let i = 0; i < arr.length; i += num) {
-    list.push(arr.slice(i, i + num));
-  }
+//   for (let i = 0; i < arr.length; i += num) {
+//     list.push(arr.slice(i, i + num));
+//   }
 
-  return list;
-}
+//   return list;
+// }
 
-console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+// console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
 
 
 
