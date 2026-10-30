@@ -5,6 +5,7 @@ import { Request } from "express";
 import {ObjectId} from 'mongoose'
 
 export interface Member {
+    _id:ObjectId;
     memberType: MemeberType,
     memberStatus:MemeberStatus,
     memberNick:string;
