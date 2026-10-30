@@ -2,12 +2,16 @@ import express  from "express";
 const router = express.Router();
 import memeberController from "./controllers/member.controller";     
 
-router
-    .post('/login', memeberController.login);
 
-router
-    .post('/signup', memeberController.signup);
+//Member
+router.post('/member/login', memeberController.login);
+router.post('/member/signup', memeberController.signup);
+router.get("/member/detail", memeberController.verifyAuth)
+
+ //Product
 
 
+
+ //Order
 
 export default router;
