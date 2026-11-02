@@ -90,7 +90,7 @@ class MemberService {
       .find({ 
         memberType: MemeberType.USER, 
         memberStatus: MemeberStatus.ACTIVE, 
-        memberPoints: { $gt: 0 } 
+        memberPoints: { $gte: 1} 
     })
       .sort({ memberPoints: -1 })
       .limit(4)
