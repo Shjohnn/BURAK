@@ -14,7 +14,7 @@ router.post("/member/update",
     memeberController.verifyAuth,
     uploader("members").single('memberImage'),
     memeberController.updateMember);
-router.get("/member/top-users", memeberController.verifyAuth, memeberController.getTopUsers);
+router.get("/member/top-users",  memeberController.getTopUsers);
 
  //Product
 

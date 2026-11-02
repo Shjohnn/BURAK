@@ -161,3 +161,31 @@ memeberController.retrieveAuth = async (
 
 
 export default memeberController ;
+
+
+
+
+//   public async login(input: LoginInput): Promise<Member> {
+//     const member = await this.memberModel
+//       .findOne(
+//         {
+//           memberNick: input.memberNick,
+//           memberStatus: { $ne: MemeberStatus.DELETE },
+//         },
+//         { memberNick: 1, memberPassword: 1, memberStatus: 1 },
+//       )
+//       .exec();
+//     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+//     else if (member.memberStatus === MemeberStatus.BLOCK) {
+//       throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+//     }
+//     const isMatch = await bcrypt.compare(
+//       input.memberPassword,
+//       member.memberPassword,
+//     );
+//     if (!isMatch) {
+//       throw new Errors(HttpCode.UNATHORIZED, Message.WRONG_PASSWORD);
+//     }
+
+//     return await this.memberModel.findById(member._id).lean().exec();
+//   }
