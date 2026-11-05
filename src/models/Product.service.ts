@@ -41,40 +41,44 @@ class ProductService {
     };
 
 
-public async getProduct(id: string, memberId: ObjectId | null): Promise<Product> {
-    const productId = shapeIntoMongooseObjectId(id);
+public async getProduct(
+  memberId: ObjectId | null,
+  id: string | string[]
+): Promise<Product> {
+  const productId = shapeIntoMongooseObjectId(id);
 
-    let result = await this.productModel
-        .findOne({ _id: productId, productStatus: ProductStatus.PROCESS })
+  let result = await this.productModel
+    .findOne({ _id: productId, productStatus: ProductStatus.PROCESS })
+    .exec();
+  if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+  if (memberId) {
+    // View log mavjudligini tekshirish
+    const input: ViewInput = {
+      memberId: memberId,
+      viewRefId: productId,
+      viewGroup: ViewGroup.PRODUCT,
+    };
+    const existView = await this.viewService.checkViewExistence(input);
+
+    console.log("exist", !!existView);
+    if (!existView) {
+      // Yangi view log yozish
+      console.log("PLANNING TO INSERT NEW VIEW");
+      await this.viewService.insertMemberView(input);
+
+      // Sonni oshirish
+      result = await this.productModel
+        .findByIdAndUpdate(
+          productId,
+          { $inc: { productViews: +1 } },
+          { new: true }
+        )
         .exec();
-    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
-
-    if (memberId) {
-        // view log mavjudligini tekshirish
-        const input: ViewInput = {
-            viewGroup: ViewGroup.PRODUCT,
-            memberId: memberId,
-            viewRefId: productId,
-        };
-        const existView = await this.viewService.checkViewExistence(input);
-        console.log("existView:", !!existView);
-
-        // yangi view bo'lsagina log yozib, sonni oshiramiz
-        if (!existView) {
-            console.log("planning to insert a new view log");
-            await this.viewService.insertMemberView(input);
-
-            result = await this.productModel
-                .findByIdAndUpdate(
-                    productId,
-                    { $inc: { productViews: 1 } },
-                    { new: true }
-                )
-                .exec();
-        }
     }
+  }
 
-    return result as Product;
+  return result;
 }
    
     //SSR
