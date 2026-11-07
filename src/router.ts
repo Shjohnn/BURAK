@@ -25,11 +25,8 @@ router.get("/product/:id", memeberController.retrieveAuth, productController.get
 
 
  //Order
- router.post(
-    "/order/create",
-    memeberController.verifyAuth,
-    orderController.createOrder
- )
+ router.post("/order/create",memeberController.verifyAuth,orderController.createOrder);
+ router.get("/order/all", memeberController.verifyAuth, orderController.getMyOrders);
 
 
 
