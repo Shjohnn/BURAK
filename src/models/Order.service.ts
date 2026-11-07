@@ -29,7 +29,7 @@ class OrderService {
 
         try {
             const newOrder: Order = await this.orderModel.create({
-                orderTotal: amount,
+                orderTotal: amount+delivery,
                 orderDelivery: delivery,
                 OrderStatus: "PAUSE",
                 memberId: memberId,
@@ -48,13 +48,13 @@ class OrderService {
 
 
     private async recordOrderItem(orderId:ObjectId, input:OrderItemInput[]): Promise<void> {
-        const promisedList = input.map(async (item:OrderItemInput) => {
+        const promisedList = input.map(async (item:OrderItemInput) => { //peniding boladi
             item.orderId = orderId;
             item.productId = shapeIntoMongooseObjectId(item.productId);
             await this.orderItemModel.create(item);
             return "INSERTED";
         });
-       const orderItemsState = await Promise.all(promisedList);
+       const orderItemsState = await Promise.all(promisedList);//pending larni kutib turadi va result qaytaradi
        console.log("orderItemsState", orderItemsState);
     };
 
